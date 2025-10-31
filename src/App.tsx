@@ -1,21 +1,29 @@
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";
 import { Accordion } from "./components/ui/accordion";
+import { Loader } from "./components/ui/loader";
 import { Tabs } from "./components/ui/tabs";
 import { useEpisodes } from "./hooks/use-episodes";
 import { useShowDetails } from "./hooks/use-show-details";
 import type { Episode } from "./types";
 
 export const App = () => {
-	const { showDetails, isShowDetailsLoading } = useShowDetails();
-	const { episodes, isEpisodesLoading } = useEpisodes();
+	const { showDetails, isShowDetailsLoading, showDetailsError } =
+		useShowDetails();
+	const { episodes, isEpisodesLoading, episodesError } = useEpisodes();
 
 	if (isShowDetailsLoading || isEpisodesLoading) {
-		return (
-			<div className="min-h-screen flex items-center justify-center">
-				<p className="text-white">Carregando...</p>
-			</div>
-		);
+		return <Loader />;
+	}
+
+	if (showDetailsError || episodesError) {
+		console.error("Erro ao carregar dados:", showDetailsError || episodesError);
+		alert("Erro ao carregar os dados. Tente novamente.");
+		return null;
+	}
+
+	if (!showDetails || !episodes) {
+		return <Loader />;
 	}
 
 	const validEpisodes = episodes.filter(
