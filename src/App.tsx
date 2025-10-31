@@ -50,22 +50,21 @@ export const App = () => {
 		.sort((a, b) => a - b);
 
 	return (
-		<div className="min-h-screen flex flex-col">
+		<div className="h-screen flex flex-col">
+			<div
+				className="absolute inset-0 -z-10 bg-cover bg-center"
+				style={{ backgroundImage: `url(${showDetails.Images.Background})` }}
+			/>
+			<div className="absolute inset-0 -z-10 bg-gradient-left" />
+			<div className="absolute inset-0 -z-10 bg-gradient-bottom mb-20" />
 			<div className="relative z-10 flex flex-col flex-1 overflow-hidden px-10 pt-6">
-				<div
-					className="absolute inset-0 -z-10 bg-cover bg-center"
-					style={{ backgroundImage: `url(${showDetails.Images.Background})` }}
-				/>
-				<div className="absolute inset-0 -z-10 bg-gradient-left" />
-				<div className="absolute inset-0 -z-10 bg-gradient-bottom mb-20" />
-
 				<Header
 					title={showDetails.Title}
 					year={showDetails.Year}
 					genres={showDetails.Genres}
 				/>
 
-				<section className="ml-auto w-[300px] overflow-y-auto max-h-[calc(100vh-var(--footer-height))] scrollbar-thin">
+				<section className="ml-auto w-[300px] overflow-y-auto flex-1 scrollbar-thin pb-4">
 					<Tabs
 						tabs={seasonNumbers.map((seasonNumber) => ({
 							id: `season-${seasonNumber}`,

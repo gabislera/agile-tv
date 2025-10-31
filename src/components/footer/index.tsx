@@ -20,8 +20,8 @@ export const Footer = ({ synopsis, cast }: FooterProps) => {
 	];
 
 	return (
-		<footer className="absolute bottom-0 left-0 right-0 z-10 py-6 px-10 bg-zinc-900">
-			<div className="min-h-(--footer-height) h-full">
+		<footer className="z-10 py-4 sm:py-6 px-4 sm:px-6 md:px-10 bg-zinc-900 shrink-0 overflow-x-hidden">
+			<div className="h-full flex flex-col min-h-[270px] md:min-h-[150px] max-w-full">
 				<Tabs tabs={tabs} defaultTab="general" />
 			</div>
 		</footer>

@@ -14,14 +14,12 @@ interface TabsProps {
 export const Tabs = ({ tabs, defaultTab }: TabsProps) => {
 	const [active, setActive] = useState(defaultTab || tabs[0].id);
 
-	const activeTab = tabs.find((t) => t.id === active) ?? tabs[0];
-
 	return (
-		<div className="w-full">
+		<div className="w-full h-full flex flex-col">
 			<div
 				role="tablist"
 				aria-label="Tabs"
-				className="flex gap-6 border-b border-white/20"
+				className="flex gap-6 border-b border-white/20 shrink-0"
 			>
 				{tabs.map((tab) => (
 					<button
@@ -41,8 +39,23 @@ export const Tabs = ({ tabs, defaultTab }: TabsProps) => {
 					</button>
 				))}
 			</div>
-			<div id={`panel-${activeTab.id}`} role="tabpanel">
-				{activeTab.content}
+			<div className="flex-1 overflow-y-auto relative">
+				<div className="grid">
+					{tabs.map((tab) => (
+						<div
+							key={tab.id}
+							id={`panel-${tab.id}`}
+							role="tabpanel"
+							aria-hidden={active !== tab.id}
+							className="[grid-area:1/1]"
+							style={{
+								visibility: active === tab.id ? "visible" : "hidden",
+							}}
+						>
+							{tab.content}
+						</div>
+					))}
+				</div>
 			</div>
 		</div>
 	);
