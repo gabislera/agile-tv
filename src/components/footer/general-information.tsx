@@ -7,7 +7,7 @@ const itemList = [
 	{ id: 4, icon: Share, label: "Compartir" },
 ];
 
-export const GeneralInformation = () => {
+export const GeneralInformation = ({ synopsis }: { synopsis: string }) => {
 	return (
 		<div className="w-full flex flex-col md:flex-row items-start md:items-center gap-6 pt-8">
 			<div className="flex items-center justify-start gap-8 w-full md:max-w-[400px]">
@@ -31,12 +31,7 @@ export const GeneralInformation = () => {
 				<h4 className="text-sm uppercase font-semibold tracking-wide mb-2">
 					Sinopse
 				</h4>
-				<p className="text-sm leading-relaxed max-w-3xl">
-					Durante uma missão a Marte da nave tripulada Ares III, uma forte
-					tormenta se desata, e o astronauta Mark Watney é dado como morto por
-					seus companheiros. No entanto, ele sobrevive, mas está sozinho e com
-					poucos recursos...
-				</p>
+				<p className="text-sm leading-relaxed max-w-3xl">{synopsis}</p>
 			</div>
 		</div>
 	);

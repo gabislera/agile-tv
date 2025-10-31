@@ -1,14 +1,18 @@
-import { tvInfo } from "../../constants";
+import type { CastMember } from "../../types";
 
-export const Cast = () => {
+interface CastProps {
+	cast: CastMember[];
+}
+
+export const Cast = ({ cast }: CastProps) => {
 	return (
 		<div className="flex items-center gap-2 pt-8">
-			{tvInfo.Cast.map((cast) => (
+			{cast.map((member) => (
 				<div
-					key={cast.ID}
+					key={member.ID}
 					className="flex items-center justify-center gap-2 min-w-[150px] h-[70px] bg-zinc-800 px-4"
 				>
-					<span>{cast.Name}</span>
+					<span>{member.Name}</span>
 				</div>
 			))}
 		</div>
