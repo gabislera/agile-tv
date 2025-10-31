@@ -20,6 +20,7 @@ export const Header = ({ title, year, genres }: HeaderProps) => {
 			</div>
 			<button
 				type="button"
+				aria-label="Fechar"
 				className="text-white text-4xl cursor-pointer hover:text-gray-400 transition-colors"
 			>
 				<X className="w-8 h-8" />

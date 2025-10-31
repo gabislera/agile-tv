@@ -15,6 +15,7 @@ export const GeneralInformation = ({ synopsis }: { synopsis: string }) => {
 					<button
 						key={id}
 						type="button"
+						aria-label={label}
 						className="flex flex-col items-center justify-center text-gray-400 hover:text-white transition-colors cursor-pointer w-[80px]"
 					>
 						<span className="border border-white/60 rounded-full p-2 hover:bg-white/10 transition-colors">

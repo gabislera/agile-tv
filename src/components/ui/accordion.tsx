@@ -21,9 +21,13 @@ export const Accordion = ({
 			>
 				<summary className="flex items-center justify-between ">
 					<span>{title}</span>
-					<span className="border border-white/60 rounded-full p-2 hover:bg-white/10 transition-colors">
+					<button
+						className="border border-white/60 rounded-full p-2 hover:bg-white/10 transition-colors"
+						aria-label="Reproduzir episódio"
+						type="button"
+					>
 						<Play className="w-4 h-4" />
-					</span>
+					</button>
 				</summary>
 			</details>
 			<div
